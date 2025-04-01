@@ -1,0 +1,20 @@
+{
+    "paths": 64,
+    "flatIntVars": 62,
+    "flatIntConstraints": 47,
+    "method": "minimize",
+    "flatTime": "0:00:00.374989",
+    "time": "0:00:00.393000",
+    "initTime": "0:00:00.001231",
+    "solveTime": "0:00:00.000915",
+    "solutions": 1,
+    "variables": 82,
+    "propagators": 49,
+    "propagations": 572,
+    "nodes": 34,
+    "failures": 14,
+    "restarts": 0,
+    "peakDepth": 13,
+    "nSolutions": 1,
+    "status": "OPTIMAL_SOLUTION"
+}
