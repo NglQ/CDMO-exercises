@@ -32,53 +32,12 @@ def return_coods(m,l,px,py):
 
 
 def optimize(s,rects,px,py,under,left,W,H):
-  #implict constraint: a rectangle can't be both right and left wrt another
-  #same holds for under and over
+  # TODO:
+  #   1) implict constraint: a rectangle can't be both right and left wrt another
+  #   2) same holds for under and over
+  #   3) limit the dommain of the biggest rectangle, thus avoiding most symm options
+  #   4) avoid combinations of rectangles that would go out of borders
+  #   5) fix positions for same size rectangles
 
-  for (ri,rj) in itertools.combinations(range(len(rects)),2):
-    s.add(Or(
-        Not(left[ri][rj]),
-        Not(left[rj][ri])
-    ))
-    s.add(Or(
-        Not(under[ri][rj]),
-        Not(under[rj][ri])
-    ))
-
-
-  #limit the dommain of the biggest rectangle, thus avoiding most symm options
-
-  bigger_r = max(rects, key=lambda p:p[0]*p[1])
-  ri = rects.index(bigger_r)
-
-  limit_x = math.floor((W-bigger_r[0])/2)
-  for x in range(limit_x):
-    s.add(Not(px[ri][x]))
-  for r in range(len(rects)):
-    if r!= ri and rects[r][0] > limit_x+1:
-      s.add(Not(left[ri][r]))
-
-  limit_y = math.floor((H-bigger_r[1])/2)
-  for y in range(limit_y):
-    s.add(Not(py[ri][y]))
-  for r in range(len(rects)):
-    if r!= ri and rects[r][1] > limit_y+1:
-      s.add(Not(under[ri][r]))
-
-  #avoid combinations of rectangles that would go out of borders
-  for (ri,rj) in itertools.combinations(range(len(rects)),2):
-    if (rects[ri][0] + rects[rj][0] > W):
-      s.add(Not(left[ri][rj]))
-      s.add(Not(left[rj][ri]))
-
-    if (rects[ri][1] + rects[rj][1] > H):
-      s.add(Not(under[ri][rj]))
-      s.add(Not(under[rj][ri]))
-
-  #fix positions for same size rectangles
-  for (ri,rj) in itertools.combinations(range(len(rects)),2):
-    if (rects[ri] == rects[rj]):
-      s.add(Not(left[rj][ri]))
-      s.add(Or(Not(under[rj][ri]),left[ri][rj]))
 
   return s
