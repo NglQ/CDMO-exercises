@@ -3,3 +3,4 @@
 SAT exercises using Z3 tutorials to develop solutions for well known problems
 ## VLSI Problem Formulations
 CP and SAT formulation of the VLSI problem
+## TO BE DELETED!!!
