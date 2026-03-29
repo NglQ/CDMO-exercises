@@ -103,3 +103,28 @@ def display_scheduling(sol):
 
     fig.tight_layout()
     plt.show()
+
+def int_to_bits(x, n):
+    return [(x >> i) & 1 for i in range(n)]
+
+def decimal_to_binary(a_dec, b_dec, n):
+    a_bit = int_to_bits(a_dec, n)
+    b_bit = int_to_bits(b_dec, n)
+
+    A_true_idxs = [i for i,v in enumerate(a_bit) if v == 1]
+    A_false_idxs = [i for i,v in enumerate(a_bit) if v == 0]
+    B_true_idxs = [i for i,v in enumerate(b_bit) if v == 1]
+    B_false_idxs = [i for i,v in enumerate(b_bit) if v == 0]
+
+    return A_true_idxs, A_false_idxs, B_true_idxs, B_false_idxs
+
+
+def get_complete_input_idxs(n_bits, a_true_idxs, b_true_idxs):
+    A_true_idxs = a_true_idxs
+    A_false_idxs = list(filter(lambda x: x not in A_true_idxs, range(n_bits-1)))
+
+    B_true_idxs = b_true_idxs
+    B_false_idxs = list(filter(lambda x: x not in B_true_idxs, range(n_bits-1)))
+
+    return A_true_idxs, A_false_idxs, B_true_idxs, B_false_idxs
+
