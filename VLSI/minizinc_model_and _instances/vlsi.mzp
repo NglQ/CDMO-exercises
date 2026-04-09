@@ -1,0 +1,24 @@
+{
+    "openFiles": [
+        "ins-08.dzn",
+        "ins-10.dzn",
+        "ins-14.dzn",
+        "ins-16.dzn",
+        "ins-19.dzn",
+        "ins-25.dzn",
+        "VLSI_CP_model_search.mzn"
+    ],
+    "openTab": 6,
+    "projectFiles": [
+        "VLSI_CP_model_search.mzn",
+        "ins-08.dzn",
+        "ins-10.dzn",
+        "ins-14.dzn",
+        "ins-16.dzn",
+        "ins-19.dzn",
+        "ins-25.dzn"
+    ],
+    "selectedBuiltinConfigId": "org.gecode.gecode",
+    "selectedBuiltinConfigVersion": "6.3.0",
+    "version": 106
+}
